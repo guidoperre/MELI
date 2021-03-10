@@ -7,6 +7,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 val networkModule = module {
 
@@ -25,8 +26,17 @@ val networkModule = module {
             .build()
     }
 
+    fun provideRetrofitWithoutGson(client: OkHttpClient, baseUrl: String): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(client)
+            .build()
+    }
+
     single { provideHttpClient() }
-    single (named("google")) { provideRetrofit(get(),"http://suggestqueries.google.com/") }
+    single (named("google")) { provideRetrofitWithoutGson(get(),"http://suggestqueries.google.com/") }
     single (named("mercadolibre")) { provideRetrofit(get(),"https://api.mercadolibre.com/") }
 
 }

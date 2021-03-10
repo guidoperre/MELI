@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "580330307869",
+    "project_id": "meli-4afcf",
+    "storage_bucket": "meli-4afcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580330307869:android:882d647052661fff58a1f4",
+        "android_client_info": {
+          "package_name": "com.guidoperre.meli"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580330307869-7noa3ruatb4knd8logvvc6e2hd4kmiu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcwumP7ajoLaKk9OsoSIyLVVCC2vfpGxw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580330307869-7noa3ruatb4knd8logvvc6e2hd4kmiu2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,10 +8,10 @@ class Tools {
             val suggestions = ArrayList<String>()
             if (response != null){
                 val split = response.split("[","]")
-                if (split.size > 1){
-                    val parsed = split[1].split(",")
+                if (split.size > 2){
+                    val parsed = split[2].split(",")
                     for (suggest in parsed)
-                        suggestions.add(suggest)
+                        suggestions.add(suggest.replace("\"",""))
                 }
             }
             return suggestions

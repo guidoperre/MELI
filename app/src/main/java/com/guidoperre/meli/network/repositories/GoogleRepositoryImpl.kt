@@ -17,7 +17,7 @@ class GoogleRepositoryImpl(
             } else
                 null
         } catch (e: Exception) {
-            Log.i("getSuggestions", "Connection error" + e.message)
+            Log.i("getSuggestions", "Error" + e.message)
             null
         }
     }
