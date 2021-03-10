@@ -7,7 +7,7 @@ import retrofit2.http.Query
 interface GoogleAPI {
 
     @GET("/complete/search")
-    suspend fun getAutoSuggest(
+    suspend fun getSuggests(
             @Query("client") client: String,
             @Query("q") query: String,
     ): Response<String>
