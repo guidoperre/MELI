@@ -1,4 +1,4 @@
-package com.guidoperre.meli.ui.adapter
+package com.guidoperre.meli.ui.search.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.guidoperre.meli.databinding.ItemSearchBinding

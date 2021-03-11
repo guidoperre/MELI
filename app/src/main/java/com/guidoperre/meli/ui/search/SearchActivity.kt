@@ -6,13 +6,12 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.guidoperre.meli.R
 import com.guidoperre.meli.databinding.ActivitySearchBinding
-import com.guidoperre.meli.ui.adapter.SuggestAdapter
+import com.guidoperre.meli.ui.search.adapter.SuggestAdapter
 import com.guidoperre.meli.ui.search_preview.SearchPreviewActivity
 import com.guidoperre.meli.utils.MyItemClickListener
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -49,13 +48,15 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
     private fun setObservables() {
         model.suggestsHandler.observe(this, {
             if (it != null && binding.etSearch.text.toString() != "")
-                adapter.setSuggests(it)
+                setSuggests(it)
             else
-                adapter.setSuggests(ArrayList())
+                setSuggests(ArrayList())
         })
     }
 
     private fun queryListener(){
+        if (intent.getStringExtra("query") != null)
+            binding.etSearch.setText(intent.getStringExtra("query"))
         binding.etSearch.requestFocus()
         binding.etSearch.addTextChangedListener(object : TextWatcher {
 
@@ -75,6 +76,14 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
             }
 
         })
+    }
+
+    private fun setSuggests(suggests: List<String>){
+        val suggestsFinal = ArrayList<String>()
+        if (binding.etSearch.text.toString() != "")
+            suggestsFinal.add(binding.etSearch.text.toString())
+        suggestsFinal.addAll(suggests)
+        adapter.setSuggests(suggestsFinal)
     }
 
     fun eraseText(){

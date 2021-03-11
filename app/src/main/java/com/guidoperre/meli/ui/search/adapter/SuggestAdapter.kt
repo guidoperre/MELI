@@ -1,4 +1,4 @@
-package com.guidoperre.meli.ui.adapter
+package com.guidoperre.meli.ui.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -5,5 +5,8 @@
     <string name="referencia_link_de_busqueda">Referencia link de busqueda</string>
     <string name="referencia_busqueda">Referencia busqueda</string>
     <string name="cero_resultados">0 resultados</string>
-    <string name="llegan_manana">Llegan mañana</string>
+    <string name="llega_hoy">Llega hoy</string>
+    <string name="no_hay_productos">No hay productos</string>
+    <string name="imagen_articulo">Imagen articulo</string>
+    <string name="envio_gratis">Envio gratis</string>
 </resources>

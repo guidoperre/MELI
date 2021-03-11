@@ -27,6 +27,9 @@
                 android:layout_height="45dp"
                 android:layout_marginHorizontal="20dp"
                 android:background="@drawable/background_edit_text"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{() -> activity.goSearch()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -59,7 +62,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
+            android:id="@+id/cl_tab"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@color/white"
@@ -105,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/quicksand_regular"
-                android:text="@string/llegan_manana"
+                android:text="@string/envio_gratis"
                 android:textColor="@color/gris_700"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -114,14 +117,50 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_search"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl_search"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-            tools:listitem="@layout/item_search" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_tab">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_search"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                tools:listitem="@layout/item_product"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_tab" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:id="@+id/tv_sin_resultados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="@string/no_hay_productos"
+            android:textColor="@color/gris_500"
+            android:textSize="14sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_tab" />
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminateTint="@color/amarillo_500"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_tab" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
