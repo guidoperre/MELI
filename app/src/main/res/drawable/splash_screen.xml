@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@color/amarillo_500"
+        android:gravity="center" />
+
+    <item
+        android:width="170dp"
+        android:height="170dp"
+        android:drawable="@drawable/ic_splash"
+        android:gravity="center" />
+
+</layer-list>

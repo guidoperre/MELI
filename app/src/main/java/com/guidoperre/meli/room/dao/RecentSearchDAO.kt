@@ -1,4 +1,4 @@
-package com.guidoperre.meli.room.daos
+package com.guidoperre.meli.room.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
