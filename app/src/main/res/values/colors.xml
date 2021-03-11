@@ -3,6 +3,11 @@
     <color name="amarillo_300">#FFDB13</color>
     <color name="amarillo_500">#F5D415</color>
     <color name="gris_300">#F2F2F2</color>
+    <color name="gris_500">#B6B6B6</color>
+    <color name="gris_700">#858585</color>
+    <color name="verde_300">#E5F7ED</color>
+    <color name="verde_500">#32BA77</color>
+    <color name="azul_500">#3284F8</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

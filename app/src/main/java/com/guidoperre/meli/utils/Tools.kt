@@ -13,6 +13,8 @@ class Tools {
                     for (suggest in parsed)
                         suggestions.add(suggest.replace("\"",""))
                 }
+                if (suggestions.size == 1 && suggestions[0] == "")
+                    suggestions.clear()
             }
             return suggestions
         }

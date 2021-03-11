@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MELI</string>
+    <string name="lupita_referencia_buscador">Lupita referencia buscador</string>
+    <string name="buscar_en_mercado_libre">Buscar en Mercado Libre</string>
+    <string name="referencia_link_de_busqueda">Referencia link de busqueda</string>
+    <string name="referencia_busqueda">Referencia busqueda</string>
+    <string name="cero_resultados">0 resultados</string>
+    <string name="llegan_manana">Llegan mañana</string>
 </resources>

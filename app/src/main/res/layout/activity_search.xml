@@ -1,7 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.MainActivity"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="activity"
+            type="com.guidoperre.meli.ui.search.SearchActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.search.SearchActivity" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_buscador"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:elevation="5dp"
+            android:background="@color/amarillo_300"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/background_edit_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_lupa"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:contentDescription="@string/lupita_referencia_buscador"
+                    android:padding="10dp"
+                    android:src="@mipmap/ic_lupita_foreground"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="10dp"
+                    android:autofillHints="Buscador"
+                    android:background="@color/white"
+                    android:textCursorDrawable="@drawable/background_cursor"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:gravity="center|start"
+                    android:hint="@string/buscar_en_mercado_libre"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    android:textColor="@color/gris_700"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_cruz"
+                    app:layout_constraintStart_toEndOf="@+id/iv_lupa" />
+
+                <ImageView
+                    android:id="@+id/iv_cruz"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/lupita_referencia_buscador"
+                    android:padding="13dp"
+                    android:src="@mipmap/ic_cruz_foreground"
+                    android:visibility="invisible"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:onClick="@{() -> activity.eraseText()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_search"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            tools:listitem="@layout/item_search"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_buscador" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

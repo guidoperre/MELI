@@ -59,6 +59,7 @@ dependencies {
 
     //Room
     implementation "androidx.room:room-runtime:${versions.room}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     kapt "androidx.room:room-compiler:${versions.room}"
 
     //Swipe Refresh
