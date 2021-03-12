@@ -13,7 +13,4 @@ data class PricesInfo (
 	@SerializedName("presentation")
 	val presentation : Presentation?,
 
-	@SerializedName("payment_method_prices")
-	val paymentMethodPrices : List<String>?
-
 )

@@ -10,9 +10,6 @@ data class Eshop (
 	@SerializedName("eshop_id")
 	val eshopId : Int?,
 
-	@SerializedName("eshop_locations")
-	val eshopLocations : List<String>?,
-
 	@SerializedName("site_id")
 	val siteId : String?,
 

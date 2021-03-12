@@ -9,9 +9,9 @@ class MercadolibreRepositoryImpl(
     private val api: MercadolibreAPI
 ): MercadolibreRepository {
 
-    override suspend fun getProducts(siteId: String, q: String): ProductSearch? {
+    override suspend fun getProducts(siteId: String, q: String, offset: Int): ProductSearch? {
         return try {
-            val response = api.getProducts(siteId, q)
+            val response = api.getProducts(siteId, q, offset)
             if (response.isSuccessful) {
                 response.body()
             } else

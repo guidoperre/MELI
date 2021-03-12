@@ -13,6 +13,7 @@ interface MercadolibreAPI {
     suspend fun getProducts(
         @Path("SITE_ID") siteId: String,
         @Query("q") query: String,
+        @Query("offset") offset: Int
     ): Response<ProductSearch>
 
 }

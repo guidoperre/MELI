@@ -2,6 +2,7 @@
 <resources>
     <color name="amarillo_300">#FFDB13</color>
     <color name="amarillo_500">#F5D415</color>
+    <color name="gris_100">#FBFBFB</color>
     <color name="gris_300">#F2F2F2</color>
     <color name="gris_500">#B6B6B6</color>
     <color name="gris_700">#858585</color>

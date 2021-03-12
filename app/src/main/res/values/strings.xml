@@ -8,5 +8,8 @@
     <string name="llega_hoy">Llega hoy</string>
     <string name="no_hay_productos">No hay productos</string>
     <string name="imagen_articulo">Imagen articulo</string>
-    <string name="envio_gratis">Envio gratis</string>
+    <string name="envio_gratis">Envío gratis</string>
+    <string name="pagina">Página</string>
+    <string name="uno">1</string>
+    <string name="pasar_de_pagina">Pasar de pagina</string>
 </resources>

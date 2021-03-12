@@ -1,16 +1,17 @@
 package com.guidoperre.meli.ui.search_preview
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.guidoperre.meli.R
 import com.guidoperre.meli.databinding.ActivitySearchPreviewBinding
+import com.guidoperre.meli.entities.product.ProductSearch
 import com.guidoperre.meli.entities.product.result.ProductResult
 import com.guidoperre.meli.ui.search.SearchActivity
 import com.guidoperre.meli.ui.search_preview.adapter.ProductAdapter
@@ -30,10 +31,12 @@ class SearchPreviewActivity : AppCompatActivity(), MyItemClickListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search_preview)
         binding.lifecycleOwner = this
         binding.activity = this
+        binding.model = model
+        binding.loading = binding.pbLoading
 
-        initList()
         setObservables()
-        setQuery()
+        switchListener()
+        initList()
         pullRefresh()
     }
 
@@ -46,59 +49,114 @@ class SearchPreviewActivity : AppCompatActivity(), MyItemClickListener {
         )
         list.adapter = adapter
         list.setHasFixedSize(true)
+        model.offsetHandler.value = 0
     }
 
     private fun setObservables() {
         model.productsHandler.observe(this, {
             binding.srlSearch.isRefreshing = false
             binding.pbLoading.visibility = View.INVISIBLE
-            if (it != null) {
-                if (it.results != null && it.results.isNotEmpty())
-                    setItems(it.results)
-                else
-                    binding.tvSinResultados.visibility = View.VISIBLE
-            } else
+            if (it != null)
+                setItems(it)
+            else
                 Toast.makeText(
                     this,
-                    "Ocurrio un error, realize otra busqueda e intente de vuelta.",
+                    "Ocurrio un error, realize otra busqueda o intente de vuelta.",
                     Toast.LENGTH_SHORT
                 ).show()
         })
+
+        model.offsetHandler.observe(this, {
+            adapter.setProducts(ArrayList())
+            setQuery()
+            setPage(it)
+            if (it > 0)
+                binding.ivBackPage.visibility = View.VISIBLE
+            else
+                binding.ivBackPage.visibility = View.INVISIBLE
+            if (model.total - it > 50 || model.total == 0)
+                binding.ivNextPage.visibility = View.VISIBLE
+            else
+                binding.ivNextPage.visibility = View.INVISIBLE
+        })
+    }
+
+    private fun switchListener(){
+        binding.swtEnvio.setOnCheckedChangeListener { _, isChecked ->
+            val products = model.productsHandler.value?.results
+            if (products != null) {
+                if (isChecked)
+                    adapter.setProducts(getEnvioGratis(products))
+                else
+                    adapter.setProducts(products)
+            } else
+                Toast.makeText(
+                    this,
+                    "Ocurrio un error, intente de vuelta.",
+                    Toast.LENGTH_SHORT
+                ).show()
+        }
     }
 
     private fun setQuery(){
         val query = intent.getStringExtra("query")
         if (query != null){
             //TODO: Cambiar siteId a codigo de pais cuando este implementado
-            model.getProducts("MLA",query)
+            model.getProducts("MLA", query)
             binding.tvSearch.text = query
-            binding.rvSearch.visibility = View.INVISIBLE
             binding.tvSinResultados.visibility = View.INVISIBLE
             binding.pbLoading.visibility = View.VISIBLE
         } else
             Toast.makeText(
-                    this,
-                    "Ocurrio un error, realize otra busqueda e intente de vuelta.",
-                    Toast.LENGTH_SHORT
+                this,
+                "Ocurrio un error, realize otra busqueda o intente de vuelta.",
+                Toast.LENGTH_SHORT
             ).show()
     }
 
-    private fun setItems(products: List<ProductResult>){
-        val resultados = "${products.size} resultados"
-        binding.rvSearch.visibility = View.VISIBLE
-        binding.tvSinResultados.visibility = View.INVISIBLE
-        binding.tvResultados.text = resultados
-        adapter.setProducts(products)
+    private fun setPage(offset: Int){
+        val page = (offset / 50) + 1
+        binding.tvNumeroPagina.text = page.toString()
+    }
+
+    private fun setItems(products: ProductSearch){
+        if (products.results != null && products.results.isNotEmpty()){
+            if (products.paging?.total != null) {
+                val resultados = "${products.paging.total} resultados"
+                model.total = products.paging.total
+                binding.tvResultados.text = resultados
+                if (model.total < 50)
+                    binding.ivNextPage.visibility = View.INVISIBLE
+            }
+            binding.tvSinResultados.visibility = View.INVISIBLE
+            if (binding.swtEnvio.isChecked)
+                adapter.setProducts(getEnvioGratis(products.results))
+            else
+                adapter.setProducts(products.results)
+        } else {
+            adapter.setProducts(ArrayList())
+            binding.tvSinResultados.visibility = View.VISIBLE
+        }
+    }
+
+    private fun getEnvioGratis(products: List<ProductResult>): List<ProductResult>{
+        val envioGratis = ArrayList<ProductResult>()
+        for (product in products)
+            if (product.shipping?.freeShipping != null && product.shipping.freeShipping)
+                envioGratis.add(product)
+        return envioGratis
     }
 
     private fun pullRefresh() {
         binding.srlSearch.setColorSchemeColors(
             ContextCompat.getColor(
-            this,
-            R.color.amarillo_500)
+                this,
+                R.color.amarillo_500
+            )
         )
         binding.srlSearch.setOnRefreshListener {
             setQuery()
+            binding.pbLoading.visibility = View.INVISIBLE
         }
     }
 

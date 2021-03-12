@@ -31,6 +31,7 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
         binding.activity = this
         initList()
         setObservables()
+        getExtras()
         queryListener()
     }
 
@@ -55,8 +56,6 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
     }
 
     private fun queryListener(){
-        if (intent.getStringExtra("query") != null)
-            binding.etSearch.setText(intent.getStringExtra("query"))
         binding.etSearch.requestFocus()
         binding.etSearch.addTextChangedListener(object : TextWatcher {
 
@@ -76,6 +75,15 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
             }
 
         })
+    }
+
+    private fun getExtras(){
+        val extraQuery = intent.getStringExtra("query")
+        if (extraQuery != null) {
+            binding.etSearch.setText(extraQuery)
+            model.getSuggests(extraQuery)
+            binding.ivCruz.visibility = View.VISIBLE
+        }
     }
 
     private fun setSuggests(suggests: List<String>){
