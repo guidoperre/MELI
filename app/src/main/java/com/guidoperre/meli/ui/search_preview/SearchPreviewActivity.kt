@@ -13,6 +13,7 @@ import com.guidoperre.meli.R
 import com.guidoperre.meli.databinding.ActivitySearchPreviewBinding
 import com.guidoperre.meli.entities.product.ProductSearch
 import com.guidoperre.meli.entities.product.result.ProductResult
+import com.guidoperre.meli.ui.home.HomeActivity
 import com.guidoperre.meli.ui.search.SearchActivity
 import com.guidoperre.meli.ui.search_preview.adapter.ProductAdapter
 import com.guidoperre.meli.utils.MyItemClickListener
@@ -56,6 +57,7 @@ class SearchPreviewActivity : AppCompatActivity(), MyItemClickListener {
         model.productsHandler.observe(this, {
             binding.srlSearch.isRefreshing = false
             binding.pbLoading.visibility = View.INVISIBLE
+            binding.swtEnvio.isClickable = true
             if (it != null)
                 setItems(it)
             else
@@ -106,6 +108,7 @@ class SearchPreviewActivity : AppCompatActivity(), MyItemClickListener {
             binding.tvSearch.text = query
             binding.tvSinResultados.visibility = View.INVISIBLE
             binding.pbLoading.visibility = View.VISIBLE
+            binding.swtEnvio.isClickable = false
         } else
             Toast.makeText(
                 this,
@@ -170,6 +173,13 @@ class SearchPreviewActivity : AppCompatActivity(), MyItemClickListener {
 
     override fun onItemClick(item: Any, position: Int) {
 
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.transition.fade_in, R.transition.fade_out)
+        finish()
     }
 
 }

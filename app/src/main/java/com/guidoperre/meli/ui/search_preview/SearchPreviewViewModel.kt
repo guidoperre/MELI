@@ -35,12 +35,12 @@ class SearchPreviewViewModel(
         }
     }
 
-    fun goBack(view: View, loading: ProgressBar){
+    fun goBack(loading: ProgressBar){
         if (loading.visibility == View.INVISIBLE)
             offsetHandler.value = offsetHandler.value?.minus(50)
     }
 
-    fun goNext(view: View, loading: ProgressBar){
+    fun goNext(loading: ProgressBar){
         if (loading.visibility == View.INVISIBLE)
             offsetHandler.value = offsetHandler.value?.plus(50)
     }

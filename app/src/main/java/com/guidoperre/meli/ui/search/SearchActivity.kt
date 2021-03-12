@@ -107,4 +107,10 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
         finish()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.transition.fade_in, R.transition.fade_out)
+        finish()
+    }
+
 }

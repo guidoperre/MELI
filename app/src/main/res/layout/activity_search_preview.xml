@@ -146,7 +146,7 @@
                 android:src="@mipmap/ic_semi_flecha_foreground"
                 android:focusable="true"
                 android:clickable="true"
-                android:onClick="@{(view) -> model.goBack(view, loading)}"
+                android:onClick="@{(view) -> model.goBack(loading)}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_numero_pagina"
                 app:layout_constraintEnd_toStartOf="@+id/tv_numero_pagina"
                 app:layout_constraintTop_toTopOf="@+id/tv_numero_pagina" />
@@ -174,7 +174,7 @@
                 android:src="@mipmap/ic_semi_flecha_foreground"
                 android:focusable="true"
                 android:clickable="true"
-                android:onClick="@{(view) -> model.goNext(view, loading)}"
+                android:onClick="@{(view) -> model.goNext(loading)}"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_numero_pagina"
                 app:layout_constraintStart_toEndOf="@+id/tv_numero_pagina"
                 app:layout_constraintTop_toTopOf="@+id/tv_numero_pagina" />
@@ -195,15 +195,15 @@
             android:layout_height="0dp"
             android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_tab_bot">
+            app:layout_constraintTop_toBottomOf="@+id/cl_tab_top">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_search"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                tools:listitem="@layout/item_product"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cl_tab" />
+                app:layout_constraintTop_toBottomOf="@+id/cl_tab"
+                tools:listitem="@layout/item_product" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -220,7 +220,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_tab_bot" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_tab_top" />
 
         <ProgressBar
             android:id="@+id/pb_loading"
@@ -232,7 +232,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_tab_bot" />
+            app:layout_constraintTop_toBottomOf="@+id/cl_tab_top" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

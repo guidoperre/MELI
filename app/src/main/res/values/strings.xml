@@ -12,4 +12,7 @@
     <string name="pagina">Página</string>
     <string name="uno">1</string>
     <string name="pasar_de_pagina">Pasar de pagina</string>
+    <string name="logo">Logo</string>
+    <string name="bienvenido_usuario">¡Bienvenido usuario!</string>
+    <string name="buscar_productos">Buscar productos</string>
 </resources>
