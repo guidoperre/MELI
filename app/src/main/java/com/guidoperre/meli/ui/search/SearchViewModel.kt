@@ -15,7 +15,7 @@ class SearchViewModel(
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    var historyHandler = ArrayList<Search>()
+    val historyHandler = MutableLiveData<List<Search>>()
     val suggestsHandler = MutableLiveData<List<Search>>()
 
     fun getHistory(){
@@ -23,7 +23,7 @@ class SearchViewModel(
             val response = withContext(Dispatchers.IO){
                 recentSearchRepository.getAllRecentSearches()
             }
-            historyHandler = response as ArrayList<Search>
+            historyHandler.value = response
         }
     }
 
@@ -41,7 +41,7 @@ class SearchViewModel(
                 googleRepository.getSuggestions(query)
             }
             if (response != null)
-                suggestsHandler.value = response!!
+                suggestsHandler.value = response
             else
                 suggestsHandler.value = ArrayList()
         }

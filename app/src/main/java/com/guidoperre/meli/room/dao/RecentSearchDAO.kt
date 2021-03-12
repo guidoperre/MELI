@@ -2,6 +2,7 @@ package com.guidoperre.meli.room.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.guidoperre.meli.entities.search.Search
@@ -17,5 +18,8 @@ interface RecentSearchDAO {
 
     @Insert
     fun insert(search: Search): Long
+
+    @Delete
+    fun delete(search: Search)
 
 }

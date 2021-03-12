@@ -21,10 +21,14 @@ class RecentSearchRepositoryImpl(
             for (recentSearch in history)
                 if (recentSearch.name == search.name)
                     exist = true
-            if (!exist){
-                search.history = true
-                recentSearchDAO.insert(search)
-            }
+            if (exist)
+                recentSearchDAO.delete(search)
+            recentSearchDAO.insert(
+                Search(
+                    0L,
+                    true,
+                    search.name
+            ))
         }
     }
 

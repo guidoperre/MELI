@@ -52,9 +52,12 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
         model.suggestsHandler.observe(this, {
             if (binding.etSearch.text.toString() != "")
                 setSuggests(it)
-            else{
-                setSuggests(model.historyHandler)
-            }
+            else if (model.historyHandler.value != null)
+                setSuggests(model.historyHandler.value!!)
+        })
+
+        model.historyHandler.observe(this, {
+            setSuggests(it)
         })
     }
 
@@ -72,7 +75,7 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
                     model.getSuggests(query)
                     binding.ivCruz.visibility = View.VISIBLE
                 } else {
-                    model.suggestsHandler.value = model.historyHandler
+                    model.suggestsHandler.value = model.historyHandler.value
                     binding.ivCruz.visibility = View.INVISIBLE
                 }
             }
