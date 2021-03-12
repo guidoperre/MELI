@@ -3,6 +3,7 @@ package com.guidoperre.meli.application
 import android.app.Application
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.guidoperre.meli.application.modules.databaseModule
+import com.guidoperre.meli.application.modules.entities.recentSearchModule
 import com.guidoperre.meli.application.modules.network.apiModule
 import com.guidoperre.meli.application.modules.network.apiRepositoryModule
 import com.guidoperre.meli.application.modules.network.networkModule
@@ -37,7 +38,9 @@ class Meli: Application(){
                     //Modulos network
                     networkModule, apiModule, apiRepositoryModule,
                     //Modulo de la base de datos
-                    databaseModule
+                    databaseModule,
+                    //Entidades
+                    recentSearchModule
                 )
             )
         }

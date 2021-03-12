@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.guidoperre.meli.R
 import com.guidoperre.meli.databinding.ActivitySearchBinding
+import com.guidoperre.meli.entities.search.Search
 import com.guidoperre.meli.ui.search.adapter.SuggestAdapter
 import com.guidoperre.meli.ui.search_preview.SearchPreviewActivity
 import com.guidoperre.meli.utils.MyItemClickListener
@@ -29,8 +30,8 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search)
         binding.lifecycleOwner = this
         binding.activity = this
-        initList()
         setObservables()
+        initList()
         getExtras()
         queryListener()
     }
@@ -44,14 +45,16 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
         )
         list.adapter = adapter
         list.setHasFixedSize(true)
+        model.getHistory()
     }
 
     private fun setObservables() {
         model.suggestsHandler.observe(this, {
-            if (it != null && binding.etSearch.text.toString() != "")
+            if (binding.etSearch.text.toString() != "")
                 setSuggests(it)
-            else
-                setSuggests(ArrayList())
+            else{
+                setSuggests(model.historyHandler)
+            }
         })
     }
 
@@ -69,7 +72,7 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
                     model.getSuggests(query)
                     binding.ivCruz.visibility = View.VISIBLE
                 } else {
-                    model.suggestsHandler.value = ArrayList()
+                    model.suggestsHandler.value = model.historyHandler
                     binding.ivCruz.visibility = View.INVISIBLE
                 }
             }
@@ -86,10 +89,14 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
         }
     }
 
-    private fun setSuggests(suggests: List<String>){
-        val suggestsFinal = ArrayList<String>()
+    private fun setSuggests(suggests: List<Search>){
+        val suggestsFinal = ArrayList<Search>()
         if (binding.etSearch.text.toString() != "")
-            suggestsFinal.add(binding.etSearch.text.toString())
+            suggestsFinal.add(Search(
+                0L,
+                false,
+                binding.etSearch.text.toString()
+            ))
         suggestsFinal.addAll(suggests)
         adapter.setSuggests(suggestsFinal)
     }
@@ -100,8 +107,9 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
     }
 
     override fun onItemClick(item: Any, position: Int) {
+        model.insertSearch(item as Search)
         val intent = Intent(this, SearchPreviewActivity::class.java)
-        intent.putExtra("query",item as String)
+        intent.putExtra("query",item.name)
         startActivity(intent)
         overridePendingTransition(R.transition.fade_in, R.transition.fade_out)
         finish()

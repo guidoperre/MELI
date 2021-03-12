@@ -4,13 +4,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.guidoperre.meli.databinding.ItemSearchBinding
+import com.guidoperre.meli.entities.search.Search
 import com.guidoperre.meli.utils.MyItemClickListener
 
 class SuggestAdapter(
         private val listener: MyItemClickListener
 ): RecyclerView.Adapter<SuggestViewHolder>() {
 
-    private var list = ArrayList<String>()
+    private var list = ArrayList<Search>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuggestViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -26,8 +27,8 @@ class SuggestAdapter(
         return list.size
     }
 
-    fun setSuggests(suggests: List<String>) {
-        list = suggests as ArrayList<String>
+    fun setSuggests(suggests: List<Search>) {
+        list = suggests as ArrayList<Search>
         notifyDataSetChanged()
     }
 
