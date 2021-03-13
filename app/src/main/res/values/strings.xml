@@ -24,6 +24,10 @@
     <string name="informacio_del_vendedor">Información del vendedor</string>
     <string name="preguntas_y_respuestas">Preguntas y respuestas</string>
     <string name="ultimas_respondidas">Últimas respondidas</string>
+    <string name="mercadopago">Acepta mercadopago</string>
+    <string name="sin_descripcion">El vendedor no escribio ninguna descripcion.</string>
     <string name="p">P</string>
     <string name="r">R</string>
+    <string name="no_hay_informacion_del_producto">No hay información del producto.</string>
+    <string name="todavia_no_hay_preguntas">Todavía no hay preguntas respondidas.</string>
 </resources>

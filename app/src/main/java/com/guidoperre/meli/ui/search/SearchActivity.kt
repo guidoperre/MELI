@@ -50,14 +50,15 @@ class SearchActivity : AppCompatActivity(), MyItemClickListener {
 
     private fun setObservables() {
         model.suggestsHandler.observe(this, {
-            if (binding.etSearch.text.toString() != "")
+            if (binding.etSearch.text.toString() != "" && it != null)
                 setSuggests(it)
             else if (model.historyHandler.value != null)
                 setSuggests(model.historyHandler.value!!)
         })
 
         model.historyHandler.observe(this, {
-            setSuggests(it)
+            if (it != null)
+                setSuggests(it)
         })
     }
 

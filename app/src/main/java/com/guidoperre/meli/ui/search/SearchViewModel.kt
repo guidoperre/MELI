@@ -15,8 +15,8 @@ class SearchViewModel(
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    val historyHandler = MutableLiveData<List<Search>>()
-    val suggestsHandler = MutableLiveData<List<Search>>()
+    val historyHandler = MutableLiveData<List<Search>?>()
+    val suggestsHandler = MutableLiveData<List<Search>?>()
 
     fun getHistory(){
         uiScope.launch {
