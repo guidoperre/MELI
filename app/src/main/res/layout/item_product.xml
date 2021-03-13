@@ -61,7 +61,7 @@
             android:layout_marginStart="15dp"
             android:paddingHorizontal="5dp"
             android:paddingVertical="2dp"
-            android:background="@drawable/background_envio"
+            android:background="@drawable/background_product_tag"
             android:ellipsize="end"
             android:fontFamily="@font/quicksand_medium"
             android:gravity="start"

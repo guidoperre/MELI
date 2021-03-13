@@ -1,5 +1,6 @@
 package com.guidoperre.meli.application.modules
 
+import com.guidoperre.meli.ui.product_page.ProductPageViewModel
 import com.guidoperre.meli.ui.search.SearchViewModel
 import com.guidoperre.meli.ui.search_preview.SearchPreviewViewModel
 import org.koin.android.viewmodel.dsl.viewModel
@@ -9,5 +10,6 @@ val viewModelModule = module {
 
     viewModel { SearchViewModel(get(),get()) }
     viewModel { SearchPreviewViewModel(get()) }
+    viewModel { ProductPageViewModel(get()) }
 
 }

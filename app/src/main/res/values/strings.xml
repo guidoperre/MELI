@@ -15,4 +15,15 @@
     <string name="logo">Logo</string>
     <string name="bienvenido_usuario">¡Bienvenido usuario!</string>
     <string name="buscar_productos">Buscar productos</string>
+    <string name="producto">Producto</string>
+    <string name="review_star">Review star</string>
+    <string name="product_images">Product images</string>
+    <string name="stock_disponible">Stock disponible</string>
+    <string name="descripcion">Descripción</string>
+    <string name="informacion_del_producto">Información del producto</string>
+    <string name="informacio_del_vendedor">Información del vendedor</string>
+    <string name="preguntas_y_respuestas">Preguntas y respuestas</string>
+    <string name="ultimas_respondidas">Últimas respondidas</string>
+    <string name="p">P</string>
+    <string name="r">R</string>
 </resources>

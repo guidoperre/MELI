@@ -4,15 +4,12 @@ import com.google.gson.annotations.SerializedName
 
 data class SellerReputation (
 
-	@SerializedName("transactions")
-	val transactions : Transactions?,
-
-	@SerializedName("power_seller_status")
+        @SerializedName("power_seller_status")
 	val powerSellerStatus : String?,
 
-	@SerializedName("metrics")
-	val metrics : Metrics?,
+        @SerializedName("metrics")
+	val metric : Metric?,
 
-	@SerializedName("level_id")
+        @SerializedName("level_id")
 	val levelId : String?
 )

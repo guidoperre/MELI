@@ -9,11 +9,13 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.guidoperre.meli.R
 import com.guidoperre.meli.databinding.ActivitySearchPreviewBinding
 import com.guidoperre.meli.entities.product.ProductSearch
 import com.guidoperre.meli.entities.product.result.ProductResult
 import com.guidoperre.meli.ui.home.HomeActivity
+import com.guidoperre.meli.ui.product_page.ProductPageActivity
 import com.guidoperre.meli.ui.search.SearchActivity
 import com.guidoperre.meli.ui.search_preview.adapter.ProductAdapter
 import com.guidoperre.meli.utils.MyItemClickListener
@@ -172,7 +174,14 @@ class SearchPreviewActivity : AppCompatActivity(), MyItemClickListener {
     }
 
     override fun onItemClick(item: Any, position: Int) {
-
+        val product = Gson().toJson(item as ProductResult)
+        val query = intent.getStringExtra("query")
+        val intent = Intent(this, ProductPageActivity::class.java)
+        intent.putExtra("query", query)
+        intent.putExtra("product", product)
+        startActivity(intent)
+        overridePendingTransition(R.transition.fade_in, R.transition.fade_out)
+        finish()
     }
 
     override fun onBackPressed() {

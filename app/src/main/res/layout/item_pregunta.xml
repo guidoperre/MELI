@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/gris_300"
+        android:background="@drawable/background_product_tag">
+
+        <TextView
+            android:id="@+id/tv_p"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="@string/p"
+            android:textColor="@color/gris_900"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_pregunta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="¿Esto es una pregunta?"
+            android:textColor="@color/gris_700"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_p"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="@string/r"
+            android:textColor="@color/gris_900"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_pregunta" />
+
+        <TextView
+            android:id="@+id/tv_respuesta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="Esto es una respuesta"
+            android:textColor="@color/gris_700"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_p"
+            app:layout_constraintTop_toBottomOf="@+id/tv_p" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

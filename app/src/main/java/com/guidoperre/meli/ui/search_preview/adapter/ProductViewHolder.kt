@@ -33,6 +33,7 @@ class ProductViewHolder(
     }
 
     private fun setImage(product: ProductResult){
+        binding.ivPortada.setImageResource(0)
         uiScope.launch {
             val response = withContext(Dispatchers.IO){
                 try {

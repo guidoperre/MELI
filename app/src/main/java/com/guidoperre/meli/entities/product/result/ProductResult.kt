@@ -2,7 +2,7 @@ package com.guidoperre.meli.entities.product.result
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductResult(
+data class ProductResult (
 
 	@SerializedName("id")
 	val id: String?,
@@ -19,9 +19,6 @@ data class ProductResult(
 	@SerializedName("price")
 	val price: Double?,
 
-	@SerializedName("prices")
-	val prices: PricesInfo?,
-
 	@SerializedName("currency_id")
 	val currencyId: String?,
 
@@ -31,32 +28,14 @@ data class ProductResult(
 	@SerializedName("sold_quantity")
 	val soldQuantity: Int?,
 
-	@SerializedName("buying_mode")
-	val buyingMode: String?,
-
-	@SerializedName("listing_type_id")
-	val listingTypeId: String?,
-
-	@SerializedName("stop_time")
-	val stopTime: String?,
-
 	@SerializedName("condition")
 	val condition: String?,
-
-	@SerializedName("permalink")
-	val permalink: String?,
 
 	@SerializedName("thumbnail")
 	val thumbnail: String?,
 
-	@SerializedName("thumbnail_id")
-	val thumbnailId: String?,
-
 	@SerializedName("accepts_mercadopago")
 	val acceptsMercadopago: Boolean?,
-
-	@SerializedName("installments")
-	val installments: Installments?,
 
 	@SerializedName("address")
 	val address: Address?,
@@ -64,11 +43,8 @@ data class ProductResult(
 	@SerializedName("shipping")
 	val shipping: Shipping?,
 
-	@SerializedName("seller_address")
-	val sellerAddress: SellerAddress?,
-
 	@SerializedName("attributes")
-	val attributes: List<Attributes>?,
+	val attributes: List<Attribute>?,
 
 	@SerializedName("category_id")
 	val categoryId: String?,
@@ -77,18 +53,6 @@ data class ProductResult(
 	val domainId: String?,
 
 	@SerializedName("catalog_product_id")
-	val catalogProductId: String?,
-
-	@SerializedName("tags")
-	val tags: List<String>?,
-
-	@SerializedName("catalog_listing")
-	val catalogListing: Boolean?,
-
-	@SerializedName("use_thumbnail_id")
-	val useThumbnailId: Boolean?,
-
-	@SerializedName("order_backend")
-	val orderBackend: Int?
+	val catalogProductId: String?
 
 )
