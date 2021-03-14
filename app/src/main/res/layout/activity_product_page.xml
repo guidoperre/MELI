@@ -9,7 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_product_page"
@@ -179,7 +180,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_marginTop="10dp"
+                    android:background="@color/gris_100"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+                <ImageView
+                    android:id="@+id/iv_thumb_foto"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:contentDescription="@string/product_images"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+                <TextView
+                    android:id="@+id/tv_cantidad_fotos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/background_cantidad_fotos"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:paddingHorizontal="7dp"
+                    android:paddingVertical="2dp"
+                    android:textColor="@color/gris_900"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/pg_foto" />
 
                 <TextView
                     android:id="@+id/tv_precio"
@@ -199,6 +224,7 @@
                     android:layout_margin="10dp"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:spanCount="6"
+                    android:nestedScrollingEnabled="false"
                     tools:listitem="@layout/item_product_tag"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_precio" />
@@ -272,6 +298,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:nestedScrollingEnabled="false"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_informacion_producto"
                     tools:listitem="@layout/item_product_info" />
@@ -410,6 +437,7 @@
                     android:id="@+id/rv_preguntas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_ultimas_respondidas"
                     tools:listitem="@layout/item_question" />
@@ -424,6 +452,7 @@
                     android:textColor="@color/gris_700"
                     android:textSize="14sp"
                     android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_ultimas_respondidas" />

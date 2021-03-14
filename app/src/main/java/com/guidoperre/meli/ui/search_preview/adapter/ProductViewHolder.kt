@@ -1,6 +1,5 @@
 package com.guidoperre.meli.ui.search_preview.adapter
 
-import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -8,11 +7,9 @@ import com.guidoperre.meli.databinding.ItemProductBinding
 import com.guidoperre.meli.entities.product.result.ProductResult
 import com.guidoperre.meli.utils.MyItemClickListener
 import kotlinx.coroutines.*
-import java.io.IOException
 import java.io.InputStream
 import java.lang.Exception
 import java.net.URL
-
 
 class ProductViewHolder(
     private val binding: ItemProductBinding,

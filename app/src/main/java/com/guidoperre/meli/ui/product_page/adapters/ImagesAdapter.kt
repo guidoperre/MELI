@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.guidoperre.meli.R
+import kotlin.collections.ArrayList
 
 class ImagesAdapter(
     private val context:Context
@@ -24,14 +24,13 @@ class ImagesAdapter(
         return view == `object`
     }
 
+
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.item_product_picture, container,false)
-        val positionText = "${position}/${count}"
         val ivPicture = view.findViewById<ImageView>(R.id.iv_picture)
-        val tvCantidadFotos = view.findViewById<TextView>(R.id.tv_cantidad_fotos)
         ivPicture.setImageDrawable(list[position])
-        tvCantidadFotos.text = positionText
+        container.addView(view)
         return view
     }
 

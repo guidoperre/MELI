@@ -5,6 +5,8 @@ import android.widget.ProgressBar
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.guidoperre.meli.entities.product.ProductSearch
+import com.guidoperre.meli.entities.product.result.Description
+import com.guidoperre.meli.entities.product.result.ProductResult
 import com.guidoperre.meli.repositories.GoogleRepository
 import com.guidoperre.meli.repositories.MercadolibreRepository
 import kotlinx.coroutines.*
@@ -26,10 +28,17 @@ class SearchPreviewViewModel(
         uiScope.launch {
             val response = withContext(Dispatchers.IO){
                 val offset = offsetHandler.value
-                if (offset != null)
-                    repository.getProducts(siteId,query, offset)
-                else
-                    repository.getProducts(siteId,query, 0)
+                var tries = 0
+                var products: ProductSearch? = null
+                while (tries < 3 && products == null){
+                    products = if (offset != null)
+                        repository.getProducts(siteId,query, offset)
+                    else
+                        repository.getProducts(siteId,query, 0)
+                    tries++
+                }
+                products
+
             }
             productsHandler.value = response
         }

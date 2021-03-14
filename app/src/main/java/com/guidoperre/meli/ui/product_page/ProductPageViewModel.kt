@@ -25,27 +25,18 @@ class ProductPageViewModel(
     val descriptionHandler = MutableLiveData<Description?>()
     val reviewsHandler = MutableLiveData<Review?>()
     val questionsHandler = MutableLiveData<ProductQuestion?>()
+    val defaultPicture = MutableLiveData<Drawable?>()
 
     fun getPictures(productId: String){
         uiScope.launch {
             val response = withContext(Dispatchers.IO){
-                val drawables = ArrayList<Drawable>()
-                val pictures = repository.getPictures(productId)
-                var limit = 0
-                if (pictures?.pictures != null)
-                    for (picture in pictures.pictures){
-                        if (limit < 6)
-                            try {
-                                val input = URL(picture.url).content as InputStream
-                                drawables.add(Drawable.createFromStream(input, "src name"))
-                                limit++
-                            } catch (e: Exception) {
-                                Log.i("Get picture","Error getting image")
-                            }
-                        else
-                            break
-                    }
-                drawables
+                var tries = 0
+                var pictures: ProductPicture? = null
+                while (tries < 3 && pictures == null){
+                    pictures = repository.getPictures(productId)
+                    tries++
+                }
+                convertDrawables(pictures?.pictures)
             }
             picturesHandler.value = response
         }
@@ -54,7 +45,13 @@ class ProductPageViewModel(
     fun getDescription(productId: String){
         uiScope.launch {
             val response = withContext(Dispatchers.IO){
-                repository.getDescription(productId)
+                var tries = 0
+                var description: Description? = null
+                while (tries < 3 && description == null){
+                    description = repository.getDescription(productId)
+                    tries++
+                }
+                description
             }
             descriptionHandler.value = response
         }
@@ -63,7 +60,13 @@ class ProductPageViewModel(
     fun getReviews(productId: String){
         uiScope.launch {
             val response = withContext(Dispatchers.IO){
-                repository.getReviews(productId)
+                var tries = 0
+                var review: Review? = null
+                while (tries < 3 && review == null){
+                    review = repository.getReviews(productId)
+                    tries++
+                }
+                review
             }
             reviewsHandler.value = response
         }
@@ -72,10 +75,50 @@ class ProductPageViewModel(
     fun getQuestions(productId: String){
         uiScope.launch {
             val response = withContext(Dispatchers.IO){
-                repository.getQuestions(productId, 4)
+                var tries = 0
+                var questions: ProductQuestion? = null
+                while (tries < 3 && questions == null){
+                    questions = repository.getQuestions(productId,4)
+                    tries++
+                }
+                questions
             }
             questionsHandler.value = response
         }
+    }
+
+    fun getDefaultPicture(url: String){
+        uiScope.launch {
+            val response = withContext(Dispatchers.IO){
+                try {
+                    val input = URL(url).content as InputStream
+                    Drawable.createFromStream(input, "src name")
+                } catch (e: Exception) {
+                    Log.i("Get picture","Error getting image")
+                    null
+                }
+            }
+            defaultPicture.value = response
+        }
+    }
+
+    private fun convertDrawables(pictures: List<Picture>?): List<Drawable>? {
+        val drawables = ArrayList<Drawable>()
+        var limit = 0
+        if (pictures != null)
+            for (picture in pictures){
+                if (limit < 6)
+                    try {
+                        val input = URL(picture.url).content as InputStream
+                        drawables.add(Drawable.createFromStream(input, "src name"))
+                        limit++
+                    } catch (e: Exception) {
+                        Log.i("Get picture","Error getting image")
+                    }
+                else
+                    break
+            }
+        return drawables
     }
 
 }

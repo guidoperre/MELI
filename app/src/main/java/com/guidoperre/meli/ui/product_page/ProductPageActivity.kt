@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.google.gson.Gson
 import com.google.gson.JsonSyntaxException
 import com.guidoperre.meli.R
@@ -105,6 +106,11 @@ class ProductPageActivity : AppCompatActivity() {
         model.questionsHandler.observe(this, {
             setQuestions(it)
         })
+
+        model.defaultPicture.observe(this, {
+            if (it != null)
+                setDefaultPicture(it)
+        })
     }
 
     private fun getItem(){
@@ -124,6 +130,8 @@ class ProductPageActivity : AppCompatActivity() {
                     model.getDescription(product.id)
                     model.getQuestions(product.id)
                 }
+                if (product.thumbnail != null)
+                    model.getDefaultPicture(product.thumbnail)
             } else
                 Toast.makeText(
                     this,
@@ -153,8 +161,32 @@ class ProductPageActivity : AppCompatActivity() {
     }
 
     private fun setPictures(pictures: List<Drawable>?){
-        if (pictures != null)
+        if (pictures != null) {
+            binding.ivThumbFoto.visibility = View.GONE
+            binding.ivThumbFoto.setImageResource(0)
             imagesAdapter.setImages(pictures)
+            var positionText = "1/${imagesAdapter.count}"
+            binding.tvCantidadFotos.text = positionText
+            binding.pgFoto.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
+                override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+                }
+
+                override fun onPageSelected(position: Int) {
+                    positionText = "${position+1}/${imagesAdapter.count}"
+                    binding.tvCantidadFotos.text = positionText
+                }
+
+                override fun onPageScrollStateChanged(state: Int) {
+
+                }
+            })
+        }
+    }
+
+    private fun setDefaultPicture(picture: Drawable) {
+        binding.ivThumbFoto.visibility = View.VISIBLE
+        binding.ivThumbFoto.setImageDrawable(picture)
     }
 
     private fun setReviews(review: Review){
