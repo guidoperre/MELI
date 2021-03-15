@@ -108,7 +108,6 @@ class SearchPreviewActivity : AppCompatActivity(), MyItemClickListener {
     private fun setQuery(){
         val query = intent.getStringExtra("query")
         if (query != null){
-            //TODO: Cambiar siteId a codigo de pais cuando este implementado
             model.getProducts("MLA", query)
             binding.tvSearch.text = query
             binding.tvSinResultados.visibility = View.INVISIBLE
