@@ -5,14 +5,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 
-/**
- * A lifecycle-aware observable that sends only new updates after subscription, used for events like
- * navigation and Snackbar messages.
- *
- * This avoids a common problem with events: on configuration change (like rotation) an update
- * can be emitted if the observer is active. This LiveData only calls the observable if there's an
- * explicit call().
- */
+/*
+    Clase para poder handlear eventos de trigger usando MutableLiveData, con el fin de facilitar
+    la forma de observar eventos del tipo Snack o transiciones entre pantallas
+*/
 class TriggerLiveEvent : MutableLiveData<Boolean>() {
 
     @MainThread

@@ -8,6 +8,9 @@ import com.guidoperre.meli.ui.select_country.SelectCountryViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
+/*
+   Declaro todos los view Model
+*/
 val viewModelModule = module {
 
     viewModel { HomeViewModel(get()) }

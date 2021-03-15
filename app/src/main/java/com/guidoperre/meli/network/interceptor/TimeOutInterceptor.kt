@@ -9,6 +9,10 @@ import java.io.IOException
 import java.net.SocketTimeoutException
 import java.util.concurrent.TimeUnit
 
+/*
+   Interceptor personalizado para poder catchear errores del tipo time out
+   o unreached connection.
+*/
 class TimeOutInterceptor : Interceptor {
 
     private val timeout = 10

@@ -70,6 +70,9 @@ class SearchPreviewActivity : AppCompatActivity(), MyItemClickListener {
                 ).show()
         })
 
+        /*
+       El offest establece la pagina de referencia
+       */
         model.offsetHandler.observe(this, {
             adapter.setProducts(ArrayList())
             setQuery()

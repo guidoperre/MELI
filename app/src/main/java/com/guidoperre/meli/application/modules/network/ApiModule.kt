@@ -16,6 +16,9 @@ val apiModule = module {
         return retrofit.create(MercadolibreAPI::class.java)
     }
 
+    /*
+    Establezco la inyeccion con parametros nombrados para asi asignar el path
+    */
     single { provideGoogleApi(get(named("google"))) }
     single { provideMercadolibreAPI(get(named("mercadolibre"))) }
 

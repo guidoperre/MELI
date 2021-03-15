@@ -6,6 +6,10 @@ class Tools {
 
     companion object {
 
+        /*
+        La API de Google devuelve una respuesta sin formato y aca se tratan los datos
+        para obtener la respuesta esperada
+        */
         fun parseGoogleResponse(response: String?): List<Search> {
             val suggestions = ArrayList<Search>()
             if (response != null){

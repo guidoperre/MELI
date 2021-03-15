@@ -6,6 +6,9 @@ import retrofit2.http.Query
 
 interface GoogleAPI {
 
+    /*
+    API de autocompletado para facilitar la busqueda de items
+    */
     @GET("/complete/search")
     suspend fun getSuggests(
             @Query("client") client: String,

@@ -25,6 +25,9 @@ val networkModule = module {
             .build()
     }
 
+    /*
+    Establezco el path segun el nombramiento
+    */
     single { provideHttpClient() }
     single (named("google")) {
         provideRetrofit(
