@@ -6,6 +6,7 @@ import com.guidoperre.meli.network.repositories.GoogleRepositoryImpl
 import com.guidoperre.meli.network.repositories.MercadolibreRepositoryImpl
 import com.guidoperre.meli.repositories.GoogleRepository
 import com.guidoperre.meli.repositories.MercadolibreRepository
+import com.guidoperre.meli.repositories.SiteRepository
 import org.koin.dsl.module
 
 val apiRepositoryModule = module {
@@ -14,11 +15,14 @@ val apiRepositoryModule = module {
         return GoogleRepositoryImpl(api)
     }
 
-    fun provideMercadolibreRepository(api : MercadolibreAPI): MercadolibreRepository {
-        return MercadolibreRepositoryImpl(api)
+    fun provideMercadolibreRepository(
+            api : MercadolibreAPI,
+            repository: SiteRepository
+    ): MercadolibreRepository {
+        return MercadolibreRepositoryImpl(api,repository)
     }
 
     single { provideGoogleRepository(get()) }
-    single { provideMercadolibreRepository(get()) }
+    single { provideMercadolibreRepository(get(),get()) }
 
 }

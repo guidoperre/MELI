@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -7,12 +7,28 @@
         <variable
             name="activity"
             type="com.guidoperre.meli.ui.home.HomeActivity" />
+        <variable
+            name="model"
+            type="com.guidoperre.meli.ui.home.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_about_me"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="15dp"
+            android:contentDescription="@string/logo"
+            android:src="@mipmap/ic_help_foreground"
+            android:focusable="true"
+            android:clickable="true"
+            android:onClick="@{() -> model.openAboutMe()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageView2"

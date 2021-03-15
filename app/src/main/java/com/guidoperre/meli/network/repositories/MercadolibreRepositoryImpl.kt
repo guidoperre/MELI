@@ -9,22 +9,29 @@ import com.guidoperre.meli.entities.product.result.Review
 import com.guidoperre.meli.entities.sites.Site
 import com.guidoperre.meli.network.endpoints.MercadolibreAPI
 import com.guidoperre.meli.repositories.MercadolibreRepository
+import com.guidoperre.meli.repositories.SiteRepository
 
 class MercadolibreRepositoryImpl(
-    private val api: MercadolibreAPI
+    private val api: MercadolibreAPI,
+    private val siteRepository: SiteRepository
 ): MercadolibreRepository {
 
     override suspend fun getProducts(siteId: String, q: String, offset: Int): ProductSearch? {
-        return try {
-            val response = api.getProducts(siteId, q, offset)
-            if (response.isSuccessful) {
-                response.body()
-            } else
+        val site = siteRepository.getSite()
+        return if (site != null && site.id != ""){
+            try {
+
+                val response = api.getProducts(site.id, q, offset)
+                if (response.isSuccessful) {
+                    response.body()
+                } else
+                    null
+            } catch (e: Exception) {
+                Log.i("getProducts", "Error" + e.message)
                 null
-        } catch (e: Exception) {
-            Log.i("getProducts", "Error" + e.message)
+            }
+        } else
             null
-        }
     }
 
     override suspend fun getPictures(productId: String): ProductPicture? {
@@ -91,6 +98,5 @@ class MercadolibreRepositoryImpl(
             null
         }
     }
-
 
 }

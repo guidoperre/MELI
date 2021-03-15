@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.guidoperre.meli.ui.home.dialog.AboutMeFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_edit_text">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:textColor="@color/gris_900"
+            android:textSize="16sp"
+            android:text="@string/acerca_de"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_marginHorizontal="25dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="@string/developed_by"
+            android:textColor="@color/gris_900"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+        <ImageView
+            android:id="@+id/iv_linkedin"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/linkedin_link"
+            android:src="@mipmap/ic_linkedin_foreground"
+            android:focusable="true"
+            android:clickable="true"
+            android:onClick="@{() -> fragment.openLinkedIn()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+        <ImageView
+            android:id="@+id/iv_github"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/github_link"
+            android:src="@mipmap/ic_github_foreground"
+            android:focusable="true"
+            android:clickable="true"
+            android:onClick="@{() -> fragment.openGithub()}"
+            app:layout_constraintEnd_toStartOf="@+id/iv_linkedin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+        <ImageView
+            android:id="@+id/iv_you_arrive"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/youarrive_link"
+            android:src="@mipmap/ic_you_arrive_foreground"
+            android:focusable="true"
+            android:clickable="true"
+            android:onClick="@{() -> fragment.openYouArrive()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_linkedin"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+        <TextView
+            android:id="@+id/tv_actual_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="@string/region_actual_seleccionada"
+            android:textColor="@color/gris_900"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_linkedin" />
+
+        <ImageView
+            android:id="@+id/iv_selected_country"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/youarrive_link"
+            android:src="@mipmap/ic_argentina_foreground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_actual_country" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

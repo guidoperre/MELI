@@ -34,4 +34,10 @@
     <string name="seleccione_la_region_deseada">Seleccione la región deseada</string>
     <string name="confirmar">Confirmar</string>
     <string name="bandera_pais">Bandera país</string>
+    <string name="acerca_de">Acerca de</string>
+    <string name="developed_by">Desarrollado por Guido Simón Perre</string>
+    <string name="linkedin_link">Linkedin link</string>
+    <string name="github_link">Github link</string>
+    <string name="youarrive_link">YouArrive link</string>
+    <string name="region_actual_seleccionada">Región actual seleccionada</string>
 </resources>

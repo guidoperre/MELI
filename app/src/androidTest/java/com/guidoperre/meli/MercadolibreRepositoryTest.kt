@@ -42,4 +42,10 @@ class MercadolibreRepositoryTest: KoinTest {
         Assert.assertNotEquals(null, response)
     }
 
+    @Test
+    fun testSites() = runBlocking {
+        val response = repository.getSites()
+        Assert.assertNotEquals(null, response)
+    }
+
 }
