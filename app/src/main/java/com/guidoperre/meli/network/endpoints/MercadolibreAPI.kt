@@ -2,6 +2,7 @@ package com.guidoperre.meli.network.endpoints
 
 import com.guidoperre.meli.entities.product.ProductSearch
 import com.guidoperre.meli.entities.product.result.*
+import com.guidoperre.meli.entities.sites.Site
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -37,5 +38,9 @@ interface MercadolibreAPI {
             @Query("item") item: String,
             @Query("api_version") apiVersion: Int
     ): Response<ProductQuestion>
+
+    @GET("/sites")
+    suspend fun getSites(
+    ): Response<List<Site>>
 
 }

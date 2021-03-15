@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
@@ -37,22 +38,41 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
         <TextView
+            android:id="@+id/textView4"
             android:layout_width="225dp"
             android:layout_height="40dp"
-            android:fontFamily="@font/quicksand_regular"
-            android:text="@string/buscar_productos"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/background_button"
+            android:clickable="true"
             android:elevation="5dp"
+            android:focusable="true"
+            android:fontFamily="@font/quicksand_regular"
             android:gravity="center"
+            android:onClick="@{() -> activity.goSearch()}"
+            android:text="@string/buscar_productos"
             android:textColor="@color/azul_700"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="225dp"
+            android:layout_height="40dp"
             android:background="@drawable/background_button"
-            android:focusable="true"
             android:clickable="true"
-            android:onClick="@{() -> activity.goSearch()}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:elevation="5dp"
+            android:layout_marginTop="15dp"
+            android:focusable="true"
+            android:fontFamily="@font/quicksand_regular"
+            android:gravity="center"
+            android:onClick="@{() -> activity.goSelectCountry()}"
+            android:text="@string/seleccionar_pais"
+            android:textColor="@color/azul_700"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline3"
@@ -60,6 +80,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.3" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.73" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

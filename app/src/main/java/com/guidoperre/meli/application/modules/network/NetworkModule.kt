@@ -1,5 +1,6 @@
 package com.guidoperre.meli.application.modules.network
 
+import com.google.gson.GsonBuilder
 import com.guidoperre.meli.network.interceptor.TimeOutInterceptor
 import okhttp3.OkHttpClient
 import org.koin.core.qualifier.named
@@ -34,6 +35,7 @@ val networkModule = module {
             .client(client)
             .build()
     }
+
 
     single { provideHttpClient() }
     single (named("google")) { provideRetrofitWithoutGson(get(),"http://suggestqueries.google.com/") }

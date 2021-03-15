@@ -5,6 +5,7 @@ import com.guidoperre.meli.entities.product.result.Description
 import com.guidoperre.meli.entities.product.result.ProductPicture
 import com.guidoperre.meli.entities.product.result.ProductQuestion
 import com.guidoperre.meli.entities.product.result.Review
+import com.guidoperre.meli.entities.sites.Site
 
 interface MercadolibreRepository {
 
@@ -17,5 +18,7 @@ interface MercadolibreRepository {
     suspend fun getReviews(productId: String): Review?
 
     suspend fun getQuestions(item: String, apiVersion: Int): ProductQuestion?
+
+    suspend fun getSites(): List<Site>?
 
 }

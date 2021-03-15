@@ -6,6 +6,7 @@ import com.guidoperre.meli.entities.product.result.Description
 import com.guidoperre.meli.entities.product.result.ProductPicture
 import com.guidoperre.meli.entities.product.result.ProductQuestion
 import com.guidoperre.meli.entities.product.result.Review
+import com.guidoperre.meli.entities.sites.Site
 import com.guidoperre.meli.network.endpoints.MercadolibreAPI
 import com.guidoperre.meli.repositories.MercadolibreRepository
 
@@ -74,6 +75,19 @@ class MercadolibreRepositoryImpl(
                 null
         } catch (e: Exception) {
             Log.i("getQuestions", "Error" + e.message)
+            null
+        }
+    }
+
+    override suspend fun getSites(): List<Site>? {
+        return try {
+            val response = api.getSites()
+            if (response.isSuccessful) {
+                response.body()
+            } else
+                null
+        } catch (e: Exception) {
+            Log.i("getSites", "Error" + e.message)
             null
         }
     }

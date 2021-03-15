@@ -15,4 +15,9 @@
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
     </style>
 
+    <style name="MyCircleCheckBox" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:button">@drawable/checkbox_selector</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
 </resources>

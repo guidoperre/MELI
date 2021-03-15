@@ -9,6 +9,7 @@ import com.guidoperre.meli.databinding.ActivityHomeBinding
 import com.guidoperre.meli.databinding.ActivitySearchBinding
 import com.guidoperre.meli.ui.search.SearchActivity
 import com.guidoperre.meli.ui.search_preview.SearchPreviewActivity
+import com.guidoperre.meli.ui.select_country.SelectCountryActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -24,6 +25,12 @@ class HomeActivity : AppCompatActivity() {
 
     fun goSearch(){
         val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
+        overridePendingTransition(R.transition.fade_in, R.transition.fade_out)
+    }
+
+    fun goSelectCountry(){
+        val intent = Intent(this, SelectCountryActivity::class.java)
         startActivity(intent)
         overridePendingTransition(R.transition.fade_in, R.transition.fade_out)
     }

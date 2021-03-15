@@ -30,4 +30,8 @@
     <string name="r">R</string>
     <string name="no_hay_informacion_del_producto">No hay información del producto.</string>
     <string name="todavia_no_hay_preguntas">Todavía no hay preguntas respondidas.</string>
+    <string name="seleccionar_pais">Seleccionar país</string>
+    <string name="seleccione_la_region_deseada">Seleccione la región deseada</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="bandera_pais">Bandera país</string>
 </resources>
