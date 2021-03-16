@@ -29,12 +29,13 @@
 
         <TextView
             android:id="@+id/tv_pregunta"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:fontFamily="@font/quicksand_regular"
             android:textColor="@color/gris_700"
             android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_p"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,13 +53,14 @@
 
         <TextView
             android:id="@+id/tv_respuesta"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:fontFamily="@font/quicksand_regular"
             android:textColor="@color/gris_700"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_p"
             app:layout_constraintTop_toBottomOf="@+id/tv_pregunta" />
 
